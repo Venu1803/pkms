@@ -1,0 +1,57 @@
+﻿
+> frontend@0.0.0 lint
+> eslint .
+
+
+C:\Users\Venu Aravind\PKMS\frontend\src\App.jsx
+  1:10  error  'useState' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\Venu Aravind\PKMS\frontend\src\pages\Dashboard.jsx
+  31:7   error  Error: Cannot access variable before it is declared
+
+`fetchProjects` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  29 |     if (storedUser) {
+  30 |       setUser(JSON.parse(storedUser));
+> 31 |       fetchProjects();
+     |       ^^^^^^^^^^^^^ `fetchProjects` accessed before it is declared
+  32 |     } else {
+  33 |       navigate("/login");
+  34 |     }
+
+  35 |   }, [navigate]);
+  36 |
+> 37 |   const fetchProjects = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |     try {
+     | ^^^^^^^^^
+> 39 |       const response = await api.get("/projects");
+     | ^^^^^^^^^
+> 40 |       setProjects(response.data);
+     | ^^^^^^^^^
+> 41 |     } catch (error) {
+     | ^^^^^^^^^
+> 42 |       console.error("Error fetching projects:", error);
+     | ^^^^^^^^^
+> 43 |     }
+     | ^^^^^^^^^
+> 44 |   };
+     | ^^^^^ `fetchProjects` is declared here
+  45 |
+  46 |   const handleDeleteProject = async (id) => {
+  47 |     if (!window.confirm("Are you sure you want to delete this project?"))  react-hooks/immutability
+  90:13  error  'token' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-unused-vars
+
+C:\Users\Venu Aravind\PKMS\frontend\src\pages\ProjectKeys.jsx
+   48:10  error    'error' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                   no-unused-vars
+  178:6   warning  React Hook useEffect has missing dependencies: 'fetchEnvironments', 'fetchProject', and 'navigate'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\Venu Aravind\PKMS\frontend\src\pages\projects.jsx
+   43:10  error  'userSearchTerm' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  153:13  error  'token' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u           no-unused-vars
+  244:9   error  'handleLogout' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u    no-unused-vars
+  652:50  error  'memberId' is not defined                                                                       no-undef
+  655:45  error  'memberId' is not defined                                                                       no-undef
+
+Γ£û 10 problems (9 errors, 1 warning)
+
